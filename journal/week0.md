@@ -12,23 +12,23 @@ Week 0 introduced and made me understand the business case and needs of the crud
 3. **Cloud Shell**: I launched my cloud shell on the AWS console and ran some commands on it
 ![Cloud shell](assets/wk0/cloudshell.png)
 4. **AWS CLI**: Using Gitpod, I synced the cruddur repository on Github with a web VScode then installed, and configured AWS CLI. 
-	* I added the gitpod task below to my `.gitpod.yml` file to use partial autoprompt mode in debugging.
-	![gitpod file](assets/wk0/gitpod.png)
-	* The Installation commands for linux OS:
-```shell
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
-```
-	* The Configuration commands:
-```shell
-gp env AWS_ACCESS_KEY_ID="xxxxxxxxx"
-gp env AWS_SECRET_ACCESS_KEY="xxxxxxx"
-gp env AWS_DEFAULT_REGION=us-east-1
-```
-	* Verify Configuration by running `aws sts get-caller-identity`. It should look like this
-	![aws cli](assets/wk0/confirmconfigure.png)
-5
+- I added the gitpod task below to my `.gitpod.yml` file to use partial autoprompt mode in debugging.
+![gitpod file](assets/wk0/gitpod.png)
+- The Installation commands for linux OS:
+	```shell
+	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+	unzip awscliv2.zip
+	sudo ./aws/install
+	```
+- The Configuration commands:
+	```shell
+	gp env AWS_ACCESS_KEY_ID="xxxxxxxxx"
+	gp env AWS_SECRET_ACCESS_KEY="xxxxxxx"
+	gp env AWS_DEFAULT_REGION=us-east-1
+	```
+- Verify Configuration by running `aws sts get-caller-identity`. It should look like this
+![aws cli](assets/wk0/confirmconfigure.png)
+5. 
 X. **Conceptual/Napkin Diagram**: View the lucid chart link [here](https://lucid.app/lucidchart/da34a832-f420-41d2-b821-dd99199001f5/edit?viewport_loc=-540%2C-150%2C3180%2C1620%2C0_0&invitationId=inv_7b6ebe3b-c751-47cf-8046-03f49f44ffe5).
 ![napkin diagram](assets/wk0/napkin1.png)
 Diagram Flow:
