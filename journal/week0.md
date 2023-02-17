@@ -6,7 +6,7 @@ Week 0 introduced and made me understand the business case and needs of the crud
  
 ## [Required Homework](#required):
 1. Admin User: Created an IAM admin user with admin acess policy
-![IAM admin user](assets/admin.png)
+![IAM admin user](assets/admin2.png)
 2. MFA 
 
 ## References:
