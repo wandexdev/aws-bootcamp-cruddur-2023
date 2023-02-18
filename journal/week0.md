@@ -35,6 +35,8 @@ Week 0 introduced and made me understand the business case and needs of the crud
 ![email](assets/wk0/snsconfirmed.png)
 - Created the metric-alarm by linking the topic previously created in configurations of a new file named `alarm-config.json` present in the aws folder generated when installed.
 - The Configuration syntax:
+<details><summary>CLICK ME</summary>
+<p>
 ```json
 {
     "AlarmName": "DailyEstimatedCharges",
@@ -72,10 +74,14 @@ Week 0 introduced and made me understand the business case and needs of the crud
     }]
 }
 ```
+</p>
+</details>
 ![metric](assets/wk0/metrics.png)
 6 **Budget**: I created this also in the AWS CLI using Gitpod
 - Firstly fill in configuration into a new file named `budjet.json` present in the aws folder generated when installed.
 - Configurstion Syntax:
+<details><summary>CLICK ME</summary>
+<p>
 ```json
 {
     "BudgetLimit": {
@@ -109,8 +115,12 @@ Week 0 introduced and made me understand the business case and needs of the crud
     "TimeUnit": "MONTHLY"
 }
 ```
-- created a new file in same directoy called `notifications-with-subscribers.
+</p>
+</details>
+- Created a new file in same directoy called `notifications-with-subscribers.
 -Configuration syntax
+<details><summary>CLICK ME</summary>
+<p>
 ```json
 [
     {
@@ -129,6 +139,8 @@ Week 0 introduced and made me understand the business case and needs of the crud
     }
 ]
 ```
+</p>
+</details>
 - Slot in credentials and run
 ```shell
 aws budgets create-budget \
