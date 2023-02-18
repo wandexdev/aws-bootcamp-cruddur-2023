@@ -29,12 +29,13 @@ Week 0 introduced and gave me in-depth knowledge of the business use case and ne
 - Verify Configuration by running `aws sts get-caller-identity`. It should look like this
 ![aws cli](assets/wk0/confirmconfigure.png)
 5. **Billing Alarm**: Upon authorizing *Billing Alerts* in Root Account, I was set to create a billing Alarm via the AWS CLI.
-- Created a Simple Notification Service(SNS) Topic and setup a subscription to serve it
+- I created a Simple Notification Service(SNS) Topic and setup a subscription to serve it
+- Here's the command ran on gitpod workspace:
 ![SNS topic](assets/wk0/snsconfig.png)
-- Email Confirmation
+- Here is the Email Confirmation:
 ![email](assets/wk0/snsconfirmed.png)
-- Created the metric-alarm by linking the topic previously created in configurations of a new file named `alarm-config.json` present in the aws folder generated when installed.
-- The Configuration syntax:
+- I then created the metric-alarm by linking the topic previously created in configurations of a new file named `alarm-config.json` present in the aws folder generated when installed.
+- Find the Configuration syntax below:
 
 <details><summary>CLICK ME</summary>
 
@@ -80,7 +81,7 @@ Week 0 introduced and gave me in-depth knowledge of the business use case and ne
 ![metric](assets/wk0/metrics.png)
 6. **Budget**: I created this also in the AWS CLI using Gitpod
 - Firstly fill in configuration into a new file named `budjet.json` present in the aws folder generated when installed.
-- Configurstion Syntax:
+- Find the Configuration Syntax below:
 
 <details><summary>CLICK ME</summary>
 
@@ -120,7 +121,7 @@ Week 0 introduced and gave me in-depth knowledge of the business use case and ne
 </details>
 
 - Created a new file in same directoy called `notifications-with-subscribers.
--Configuration syntax
+- Find the Configuration syntax below:
 
 <details><summary>CLICK ME</summary>
 
@@ -145,13 +146,14 @@ Week 0 introduced and gave me in-depth knowledge of the business use case and ne
 
 </details>
 
-- Slot in credentials and run
+- Slot in your credentials and run:
 ```shell
 aws budgets create-budget \
     --account-id AccountID \
     --budget file://aws/budget.json \
     --notifications-with-subscribers file://aws/budget-notifications-with-subscribers.json
 ``` 
+- Here's the final output on the console:
 ![budget](assets/wk0/budget.png)
 7. **Conceptual/Napkin Diagram**: View the lucid chart of this 'no technical jagon' [here](https://lucid.app/lucidchart/da34a832-f420-41d2-b821-dd99199001f5/edit?viewport_loc=-540%2C-150%2C3180%2C1620%2C0_0&invitationId=inv_7b6ebe3b-c751-47cf-8046-03f49f44ffe5).
 ![napkin diagram](assets/wk0/napkin1.png)
