@@ -37,6 +37,7 @@ Week 0 introduced and made me understand the business case and needs of the crud
 - The Configuration syntax:
 
 <details><summary>CLICK ME</summary>
+
 ```json
 {
     "AlarmName": "DailyEstimatedCharges",
@@ -82,6 +83,7 @@ Week 0 introduced and made me understand the business case and needs of the crud
 - Configurstion Syntax:
 
 <details><summary>CLICK ME</summary>
+
 ```json
 {
     "BudgetLimit": {
@@ -121,6 +123,7 @@ Week 0 introduced and made me understand the business case and needs of the crud
 -Configuration syntax
 
 <details><summary>CLICK ME</summary>
+
 ```json
 [
     {
