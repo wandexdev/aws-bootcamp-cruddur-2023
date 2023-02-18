@@ -31,9 +31,9 @@ Week 0 introduced and gave me in-depth knowledge of the business use case and ne
 
 5. **Billing Alarm**: Upon authorizing Billing Alerts in Root Account, I was set to create a billing Alarm via the AWS CLI.
 * created a Simple Notification Service(SNS) Topic and setup a subscription to serve it
-* Here's the command ran on gitpod workspace:
+* Here's the command ran on gitpod workspace above:
 ![SNS topic](assets/wk0/snsconfig.png)
-* Here is the Email Confirmation:
+* Here is the Email Confirmation above:
 ![email](assets/wk0/snsconfirmed.png)
 * I then created the metric-alarm by linking the topic previously created in configurations of a new file named `alarm-config.json` present in the aws folder generated when installed.
 * Find the Configuration syntax below:
