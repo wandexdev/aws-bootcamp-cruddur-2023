@@ -153,7 +153,7 @@ aws budgets create-budget \
     --notifications-with-subscribers file://aws/budget-notifications-with-subscribers.json
 ``` 
 ![budget](assets/wk0/budget.png)
-7. **Conceptual/Napkin Diagram**: View the lucid chart link [here](https://lucid.app/lucidchart/da34a832-f420-41d2-b821-dd99199001f5/edit?viewport_loc=-540%2C-150%2C3180%2C1620%2C0_0&invitationId=inv_7b6ebe3b-c751-47cf-8046-03f49f44ffe5).
+7. **Conceptual/Napkin Diagram**: View the lucid chart of this 'no technical jagon' [here](https://lucid.app/lucidchart/da34a832-f420-41d2-b821-dd99199001f5/edit?viewport_loc=-540%2C-150%2C3180%2C1620%2C0_0&invitationId=inv_7b6ebe3b-c751-47cf-8046-03f49f44ffe5).
 ![napkin diagram](assets/wk0/napkin1.png)
 Diagram Flow:
 - The WEB Layer entails when cruddur app users gain access through the internet and make requests. The requests are autheticated via a decentralized system then passed to the load balancer which routes it to either the front end or the back end in the APP layer depending of the kind of requests.
@@ -164,6 +164,9 @@ Diagram Flow:
 - The messaging system gets data from the database and curates the feed to users prefrences.
 - Security involves securing the entire app, by using secure coding practices, performing regular security audits, and using intrusion detection and prevention systems.
 - At the end of the day, we get a fully functional and highly lucrative application that gives huge Return on Investment(ROI).
+8. **Logical/Architecture Diagram**: View the lucid chart of this highly technical type [here](https://lucid.app/lucidchart/6855340c-c655-4009-ae53-7a8ad1480d26/edit?viewport_loc=-526%2C8%2C3184%2C1660%2C0_0&invitationId=inv_c791bc55-d016-4ae5-810c-3432121e2c59).
+![logical diagram](assets/wk0/logical.png)
+- The Logical Diagram otherwise called Architecture Diagram is a more detailed type of diagram that shows the distributed system componets and it communicates the work flow to the engineers involved in building it.
 
 ## [Homework Challenges](#challenges)
 
@@ -171,4 +174,4 @@ Diagram Flow:
 ## References:
 * [Basic Writing and Formating Syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 * [Securing an AWS Account](https://learn.cantrill.io/courses)
-*
+* [Organizing Information with Collapsed sections](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-collapsed-sections)
