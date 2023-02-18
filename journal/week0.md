@@ -140,13 +140,14 @@ aws budgets create-budget \
 7. **Conceptual/Napkin Diagram**: View the lucid chart link [here](https://lucid.app/lucidchart/da34a832-f420-41d2-b821-dd99199001f5/edit?viewport_loc=-540%2C-150%2C3180%2C1620%2C0_0&invitationId=inv_7b6ebe3b-c751-47cf-8046-03f49f44ffe5).
 ![napkin diagram](assets/wk0/napkin1.png)
 Diagram Flow:
-	* The WEB Layer entails when cruddur app users gain access through the internet and make requests. The requests are autheticated via a decentralized system then passed to the load balancer which routes it to either the front end or the back end in the APP layer depending of the kind of requests.
-	* The APP layer comprises of the Front end(serves the website) and Back end(entails the server that works with generated data from users) and they both communicate via APIs.
-	* Users can search for data with search service and this is attached to the backend server
-	* Caching aids real time experience for the users.
-	* The DATABASE layer contains stateful data for storing the Epheremal *cruds* and user identities.		* The messaging system gets data from the database and curates the feed to users prefrences.
-	* Security involves securing the entire app, by using secure coding practices, performing regular security audits, and using intrusion detection and prevention systems.
-	* At the end of the day, we get a fully functional and highly lucrative application that gives huge Return on Investment(ROI).
+- The WEB Layer entails when cruddur app users gain access through the internet and make requests. The requests are autheticated via a decentralized system then passed to the load balancer which routes it to either the front end or the back end in the APP layer depending of the kind of requests.
+- The APP layer comprises of the Front end(serves the website) and Back end(entails the server that works with generated data from users) and they both communicate via APIs.
+- Users can search for data with search service and this is attached to the backend server
+- Caching aids real time experience for the users.
+- The DATABASE layer contains stateful data for storing the Epheremal *cruds* and user identities.
+- The messaging system gets data from the database and curates the feed to users prefrences.
+- Security involves securing the entire app, by using secure coding practices, performing regular security audits, and using intrusion detection and prevention systems.
+- At the end of the day, we get a fully functional and highly lucrative application that gives huge Return on Investment(ROI).
 
 ## [Homework Challenges](#challenges)
 
