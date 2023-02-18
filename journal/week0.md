@@ -31,7 +31,7 @@ Week 0 introduced and gave me in-depth knowledge of the business use case and ne
 
 5. **Billing Alarm**: Upon authorizing Billing Alerts in Root Account, I was set to create a billing Alarm via the AWS CLI.
 * created a Simple Notification Service(SNS) Topic and setup a subscription to serve it
-* Here's the command ran on gitpod workspace above:
+* Here's the command ran on gitpod workspace below:
 ![SNS topic](assets/wk0/snsconfig.png)
 * Here is the Email Confirmation above:
 ![email](assets/wk0/snsconfirmed.png)
