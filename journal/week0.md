@@ -2,7 +2,7 @@
 ![billing and Architecture](assets/wk0/week0.png)
 
 ## Synopsis:
-Week 0 introduced and made me understand the business case and needs of the cruddur application. The cost, security measures etc, estimates of the environment its to be built in and the logical/conceptual setup of app. My **Tasks** were some specific instructions listed in [Required Homework](#required) and an unrestricted [Homework Challenges](#challenges) to explore further. I first identified the resources  needed to complete these tasks, mapped a study plan with clear objectives and timelines, and fostered relationships with people who seemed more evidently techinical on the official discord server. As a result of all these, I was able to finish up and dive deeper into all what is needed to successfully and excellently complete this project. Watch  this space....
+Week 0 introduced and gave me in-depth knowledge of the business use case and needs of the cruddur application. The cost, security measures etc, estimates of the yet-to-be-built environment and the logical/conceptual setup of the app. My **Tasks** were some specific instructions listed in [Required Homework](#required) and an unrestricted [Homework Challenges](#challenges) to explore further. I first identified the resources needed to complete these tasks, mapped a study plan with clear objectives and timelines, and fostered relationships with people who seemed more evidently technical on the official discord server. As a result of all these, I was able to finish up and dive deeper into all that is needed to efficiently complete this project. 
  
 ## [Required Homework](#required):
 1. **IAM Admin User**: Created an IAM admin user with admin access policy and generated AWS credentials from it.
