@@ -28,15 +28,16 @@ Week 0 introduced and gave me in-depth knowledge of the business use case and ne
 	```
 - Verify Configuration by running `aws sts get-caller-identity`. It should look like this:
 ![aws cli](assets/wk0/confirmconfigure.png)
+<br>
 5. **Billing Alarm**: Upon authorizing *Billing Alerts* in Root Account, I was set to create a billing Alarm via the AWS CLI.
-
 - I created a Simple Notification Service(SNS) Topic and setup a subscription to serve it
+<br>
 - Here's the command ran on gitpod workspace:
 ![SNS topic](assets/wk0/snsconfig.png)
-
+<br>
 - Here is the Email Confirmation:
 ![email](assets/wk0/snsconfirmed.png)
-
+<br>
 - I then created the metric-alarm by linking the topic previously created in configurations of a new file named `alarm-config.json` present in the aws folder generated when installed.
 - Find the Configuration syntax below:
 
