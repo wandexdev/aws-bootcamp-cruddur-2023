@@ -28,8 +28,116 @@ Week 0 introduced and made me understand the business case and needs of the crud
 	```
 - Verify Configuration by running `aws sts get-caller-identity`. It should look like this
 ![aws cli](assets/wk0/confirmconfigure.png)
-5. 
-X. **Conceptual/Napkin Diagram**: View the lucid chart link [here](https://lucid.app/lucidchart/da34a832-f420-41d2-b821-dd99199001f5/edit?viewport_loc=-540%2C-150%2C3180%2C1620%2C0_0&invitationId=inv_7b6ebe3b-c751-47cf-8046-03f49f44ffe5).
+5. **Billing Alarm**: Upon authorizing *Billing Alerts* in Root Account, I was set to create a billing Alarm via the AWS CLI.
+- Created a Simple Notification Service(SNS) Topic and setup a subscription to serve it
+![SNS topic](assets/wk0/snsconfig.png)
+- Email Confirmation
+![email](assets/wk0/snsconfirmed.png)
+- Created the metric-alarm by linking the topic previously created in configurations of a new file named `alarm-config.json` present in the aws folder generated when installed.
+- The Configuration syntax:
+```json
+{
+    "AlarmName": "DailyEstimatedCharges",
+    "AlarmDescription": "This alarm would be triggered if the daily estimated charges exceeds 10$",
+    "ActionsEnabled": true,
+    "AlarmActions": [
+        "arn:aws:sns:us-east-1:548xxxxxxxxx:billing-alarm"
+    ],
+    "EvaluationPeriods": 1,
+    "DatapointsToAlarm": 1,
+    "Threshold": 10,
+    "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+    "TreatMissingData": "breaching",
+    "Metrics": [{
+        "Id": "m1",
+        "MetricStat": {
+            "Metric": {
+                "Namespace": "AWS/Billing",
+                "MetricName": "EstimatedCharges",
+                "Dimensions": [{
+                    "Name": "Currency",
+                    "Value": "USD"
+                }]
+            },
+            "Period": 86400,
+            "Stat": "Maximum"
+        },
+        "ReturnData": false
+    },
+    {
+        "Id": "e1",
+        "Expression": "IF(RATE(m1)>0,RATE(m1)*86400,0)",
+        "Label": "DailyEstimatedCharges",
+        "ReturnData": true
+    }]
+}
+```
+![metric](assets/wk0/metrics.png)
+6 **Budget**: I created this also in the AWS CLI using Gitpod
+- Firstly fill in configuration into a new file named `budjet.json` present in the aws folder generated when installed.
+- Configurstion Syntax:
+```json
+{
+    "BudgetLimit": {
+        "Amount": "10",
+        "Unit": "USD"
+    },
+    "BudgetName": "Go Away Sapa",
+    "BudgetType": "COST",
+    "CostFilters": {
+        "TagKeyValue": [
+            "user:Key$value1",
+            "user:Key$value2"
+        ]
+    },
+    "CostTypes": {
+        "IncludeCredit": true,
+        "IncludeDiscount": true,
+        "IncludeOtherSubscription": true,
+        "IncludeRecurring": true,
+        "IncludeRefund": true,
+        "IncludeSubscription": true,
+        "IncludeSupport": true,
+        "IncludeTax": true,
+        "IncludeUpfront": true,
+        "UseBlended": false
+    },
+    "TimePeriod": {
+        "Start": 1477958399,
+        "End": 3706473600
+    },
+    "TimeUnit": "MONTHLY"
+}
+```
+- created a new file in same directoy called `notifications-with-subscribers.
+-Configuration syntax
+```json
+[
+    {
+        "Notification": {
+            "ComparisonOperator": "GREATER_THAN",
+            "NotificationType": "ACTUAL",
+            "Threshold": 60,
+            "ThresholdType": "PERCENTAGE"
+        },
+        "Subscribers": [
+            {
+                "Address": "xxxxxxxxgmail.com",
+                "SubscriptionType": "EMAIL"
+            }
+        ]
+    }
+]
+```
+- Slot in credentials and run
+```shell
+aws budgets create-budget \
+    --account-id AccountID \
+    --budget file://aws/budget.json \
+    --notifications-with-subscribers file://aws/budget-notifications-with-subscribers.json
+``` 
+![budget](assets/wk0/budget.png)
+7. **Conceptual/Napkin Diagram**: View the lucid chart link [here](https://lucid.app/lucidchart/da34a832-f420-41d2-b821-dd99199001f5/edit?viewport_loc=-540%2C-150%2C3180%2C1620%2C0_0&invitationId=inv_7b6ebe3b-c751-47cf-8046-03f49f44ffe5).
 ![napkin diagram](assets/wk0/napkin1.png)
 Diagram Flow:
 	* The WEB Layer entails when cruddur app users gain access through the internet and make requests. The requests are autheticated via a decentralized system then passed to the load balancer which routes it to either the front end or the back end in the APP layer depending of the kind of requests.
@@ -39,7 +147,7 @@ Diagram Flow:
 	* The DATABASE layer contains stateful data for storing the Epheremal *cruds* and user identities.		* The messaging system gets data from the database and curates the feed to users prefrences.
 	* Security involves securing the entire app, by using secure coding practices, performing regular security audits, and using intrusion detection and prevention systems.
 	* At the end of the day, we get a fully functional and highly lucrative application that gives huge Return on Investment(ROI).
-X. Su
+
 ## [Homework Challenges](#challenges)
 
 
