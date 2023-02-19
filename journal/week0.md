@@ -225,7 +225,8 @@ Event Bridge basically sits in between decoupled services and it allows routing 
 
 ### 6. Research on Free Tier Service Limits:
 - Starting with **Amazon SNS** as it happens that they would be used a lot. I discovered that Amazon SNS is included in Free Tier, Each month, I would incur no charges for the first 1 million Amazon SNS requests, no charges for the first 100,000 notifications over HTTP, and no charges for the first 1,000 notifications over email. 
-- 
+- First time **Lambda** user so I had to verify what am allowed to run in the free tier account. Intrestingly, AWS Lambda has 1 million free requests per month and its that way even if you use up the 12 months of free tier.
+
 
 
 ## References:
