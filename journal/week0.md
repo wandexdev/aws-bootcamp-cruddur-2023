@@ -205,8 +205,8 @@ Here is a little summary before the details:
 Event Bridge basically sits in between decoupled services and it allows routing of messages between the services. A rule is created and eventBridge knows where to route the messge when the message arrives.
 - I firstly researched on the spend for SNS topics and email deliveries(check out the No. 8 section of the [Homework Challenges](#homework-challenges) for that.
 - I created an sns topic and email subscription
-- I created a Lambda Javascript function
-- Used an Eventbridge rule to trigger the Lambda function 
+- I created a Lambda Javascript function and imputed the SNS topic arn generated above
+- Then created an Eventbridge rule to trigger the Lambda function.
 
 ### 3. Quiz on well-architected framework by TutorialDojo
 ![Well Architechted Framework](assets/wk0/tutorialdojo.png)
@@ -218,7 +218,12 @@ Event Bridge basically sits in between decoupled services and it allows routing 
 - Defined a workload called **cruddur application**
 - Answered all 58 question across all six pillars of the WAF.
 
-### 8. Research on Free Tier Service Limits:
+### 5. CI/CD pipeline with Jenkins for Cruddur
+![CI/CD](ci-cd.png)
+- This is my first time ever researching on Jenkins or a CI/CD pipeline but it was a very eventful research
+- I look forward to perfectly doing more tecnical work on this. 
+
+### 6. Research on Free Tier Service Limits:
 - Starting with **Amazon SNS** as it happens that they would be used a lot. I discovered that Amazon SNS is included in Free Tier, Each month, I would incur no charges for the first 1 million Amazon SNS requests, no charges for the first 100,000 notifications over HTTP, and no charges for the first 1,000 notifications over email. 
 - 
 
@@ -227,3 +232,8 @@ Event Bridge basically sits in between decoupled services and it allows routing 
 * [Basic Writing and Formating Syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 * [Securing an AWS Account](https://learn.cantrill.io/courses)
 * [Organizing Information with Collapsed sections](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-collapsed-sections)
+* [Lots of AWS docs](https://docs.aws.amazon.com/)
+* [Tutorials Dojo WAF Cheatsheet](https://tutorialsdojo.com/aws-well-architected-framework-five-pillars/)
+* [AWS health tools](https://github.com/aws/aws-health-tools)
+* [AWS Devops Blog]()
+
