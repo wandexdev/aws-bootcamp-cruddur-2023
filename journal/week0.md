@@ -2,7 +2,7 @@
 ![billing and Architecture](assets/wk0/week0.png)
 
 ## Synopsis:
-Week 0 introduced and gave me in-depth knowledge of the business use case and needs of the cruddur application. The cost, security measures etc, estimates of the yet-to-be-built environment and the logical/conceptual setup of the app. My **Tasks** were some specific instructions listed in [Required Homework](#required) and an unrestricted [Homework Challenges](#challenges) which enabled me explore further. I first identified the resources needed to complete these tasks, mapped a study plan with clear objectives and timelines, and fostered relationships with people who seemed more evidently technical on the official discord server. As a result of all these, I was able to finish up and dive deeper into all that is needed to efficiently complete this project. 
+Week 0 introduced and gave me in-depth knowledge of the business use case and needs of the cruddur application. The cost, security measures etc, estimates of the yet-to-be-built environment and the logical/conceptual setup of the app. My **Tasks** were some specific instructions listed in [Required Homework](#required) and an unrestricted [Homework Challenges](#homework-challenges) which enabled me explore further. I first identified the resources needed to complete these tasks, mapped a study plan with clear objectives and timelines, and fostered relationships with people who seemed more evidently technical on the official discord server. As a result of all these, I was able to finish up and dive deeper into all that is needed to efficiently complete this project. 
  
 ## [Required Homework](#required)
 > Account ID: 548XXXXXXXXX
@@ -92,7 +92,7 @@ Upon authorizing Billing Alerts in Root Account, I was set to create a billing A
 * Here's the end result on the console:
 ![metric](assets/wk0/metrics.png)
 ### 6. Budget: 
-I created a monthly **$10** spend budget also in the AWS CLI using Gitpod while I already had a zero-spend budget to watch if i had left the free tier limits.
+I created a monthly **$10 spend budget** also in the AWS CLI using Gitpod while I already had a **zero-spend budget** to watch if I had left the free tier limits.
 - Firstly fill in configuration into a new file named `budjet.json` present in the aws folder generated when installed.
 - Find the Configuration Syntax below:
 
@@ -198,17 +198,24 @@ Here is a little summary before the details:
 - [x] Attended 2 workshops organized by AWS to properly understand some AWS services use cases.
 - [x] Researched on the confinements of the free tier service limits and its impact on the flexibility of technical architectures especially the one planned for the cruddur application.
 
-### Destroyed all root user credentials:
+### 1. Destroyed all root user credentials:
 ![root credentials destroyed](assets/wk0/rootdestroy.png)
 
-### Event Brigde:
+### 2. Event Brigde:
 Event Bridge basically sits in between decoupled services and it allows routing of messages between the services. A rule is created and eventBridge knows where to route the messge when the message arrives.
-- I firstly researched on the spend for SNS topics and email deliveries(check out the last section of the [Homework Challenges](#homework-challenges) for that.
+- I firstly researched on the spend for SNS topics and email deliveries(check out the No. 8 section of the [Homework Challenges](#homework-challenges) for that.
 - I created an sns topic and email subscription
 - I created a Lambda Javascript function
 - Used an Eventbridge rule to trigger the Lambda function 
 
-### Research on Free Tier Service Limits
+### 3. Quiz on well-architected framework by TutorialDojo
+![Well Architechted Framework](tutorialdojo.png)
+- Took numerous quizzes to test my knowledge of the well-architected framework and their specific use cases.
+
+### 4. Reviewed well Architected Tool
+
+
+### 8. Research on Free Tier Service Limits:
 - Starting with **Amazon SNS** as it happens that they would be used a lot. I discovered that Amazon SNS is included in Free Tier, Each month, I would incur no charges for the first 1 million Amazon SNS requests, no charges for the first 100,000 notifications over HTTP, and no charges for the first 1,000 notifications over email. 
 - 
 
