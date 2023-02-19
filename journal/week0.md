@@ -4,17 +4,16 @@
 ## Synopsis:
 Week 0 introduced and gave me in-depth knowledge of the business use case and needs of the cruddur application. The cost, security measures etc, estimates of the yet-to-be-built environment and the logical/conceptual setup of the app. My **Tasks** were some specific instructions listed in [Required Homework](#required) and an unrestricted [Homework Challenges](#challenges) which enabled me explore further. I first identified the resources needed to complete these tasks, mapped a study plan with clear objectives and timelines, and fostered relationships with people who seemed more evidently technical on the official discord server. As a result of all these, I was able to finish up and dive deeper into all that is needed to efficiently complete this project. 
  
-## [Required Homework](#required):
+## [Required Homework](#required)
 > Account ID: 548XXXXXXXXX
 >
 > Root Account Alias: wande-cloudbootcamp
 >
 > IAM admin user Alias: admin @ wande-cloudbootcamp
 
-
 ### 1. IAM Admin User:
 Created an IAM admin user with admin access policy and generated AWS credentials from it.
-![IAM admin user](assets/wk0/user.png)
+![IAM admin user](assets/wk0/usern.png)
 ### 2. MFA: 
 Enabled Multi Factor Authentication for the root and admin user's console access. I used Google authenticator app on my mobile phone to achieve this.
 ![MFA](assets/wk0/mfa2.png)
@@ -39,7 +38,6 @@ Using Gitpod, I synced the cruddur repository on Github with a web VScode then i
 	```
 - Verify Configuration by running `aws sts get-caller-identity`. It should look like this:
 ![aws cli](assets/wk0/confirmconfigure.png)
-
 ### 5. Billing Alarm:
 Upon authorizing Billing Alerts in Root Account, I was set to create a billing Alarm via the AWS CLI.
 * I created a Simple Notification Service(SNS) Topic and setup a subscription to serve it
@@ -47,7 +45,7 @@ Upon authorizing Billing Alerts in Root Account, I was set to create a billing A
 ![SNS topic](assets/wk0/snsconfig.png)
 * Here is the Email Confirmation above:
 ![email](assets/wk0/snsconfirmed.png)
-* I then created the metric-alarm by linking the topic previously created in configurations of a new file named `alarm-config.json` present in the aws folder generated when installed.
+* I then created the metric-alarm to be trigerred if cost surpasses $1 by linking the topic previously created in configurations of a new file named `alarm-config.json` present in the aws folder generated when installed.
 * Find the Configuration syntax below:
 
 <details><summary>CLICK ME</summary>
@@ -94,7 +92,7 @@ Upon authorizing Billing Alerts in Root Account, I was set to create a billing A
 * Here's the end result on the console:
 ![metric](assets/wk0/metrics.png)
 ### 6. Budget: 
-I created a monthly **$10** spend budget also in the AWS CLI using Gitpod while I already had a zero-spend budjet to watch if i had left the free tier limits.
+I created a monthly **$10** spend budget also in the AWS CLI using Gitpod while I already had a zero-spend budget to watch if i had left the free tier limits.
 - Firstly fill in configuration into a new file named `budjet.json` present in the aws folder generated when installed.
 - Find the Configuration Syntax below:
 
@@ -163,10 +161,10 @@ I created a monthly **$10** spend budget also in the AWS CLI using Gitpod while 
 
 - Slot in your credentials and run:
 ```shell
-aws budgets create-budget \
-    --account-id AccountID \
-    --budget file://aws/budget.json \
-    --notifications-with-subscribers file://aws/budget-notifications-with-subscribers.json
+	aws budgets create-budget \
+    	--account-id AccountID \
+    	--budget file://aws/budget.json \
+    	--notifications-with-subscribers file://aws/budget-notifications-with-subscribers.json
 ``` 
 - Here's the final output of the budjet on the console:
 ![budget](assets/wk0/budget.png)
@@ -189,16 +187,30 @@ View the lucid chart of this highly technical type [here](https://lucid.app/luci
 ![logical diagram](assets/wk0/logical.png)
 - The Logical Diagram otherwise called Architecture Diagram is a more detailed type of diagram that shows the distributed system componets and it communicates the work flow to the engineers involved in building it.
 
-## [Homework Challenges](#challenges):
+## [Homework Challenges](#challenges)
 Here is a little summary before the details:
 - [x] Destroyed all root user credentials.
-- [x] Used event bridge to set health dashboard.
+- [x] Created a Lambda JavaScript function to use event bridge to link health dashboard and sns topic.
 - [x] Quiz on six pillars of the well-architected framework and their specific use cases
 - [x] Reviewed the questions of each well Architected Tool
 - [x] Created a CI/CD pipeline for the cruddur app 
 - [x] Intentionally attended a few virtual events this week in order to get AWS credits and explore more services on my account
 - [x] Attended 2 workshops organized by AWS to properly understand some AWS services use cases.
-- [x] Researched on the confinements of the free tier service limits and its imapct on the flexibility of the technical architecture planned for the cruddur application.
+- [x] Researched on the confinements of the free tier service limits and its impact on the flexibility of technical architectures especially the one planned for the cruddur application.
+
+### Destroyed all root user credentials:
+![root credentials destroyed](assets/wk0/rootdestroy.png)
+
+### Event Brigde:
+Event Bridge basically sits in between decoupled services and it allows routing of messages between the services. A rule is created and eventBridge knows where to route the messge when the message arrives.
+- I firstly researched on the spend for SNS topics and email deliveries(check out the last section of the [Homework Challenges](#homework-challenges) for that.
+- I created an sns topic and email subscription
+- I created a Lambda Javascript function
+- Used an Eventbridge rule to trigger the Lambda function 
+
+### Research on Free Tier Service Limits
+- Starting with **Amazon SNS** as it happens that they would be used a lot. I discovered that Amazon SNS is included in Free Tier, Each month, I would incur no charges for the first 1 million Amazon SNS requests, no charges for the first 100,000 notifications over HTTP, and no charges for the first 1,000 notifications over email. 
+- 
 
 
 ## References:
