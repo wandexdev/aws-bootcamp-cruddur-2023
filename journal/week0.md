@@ -6,8 +6,11 @@ Week 0 introduced and gave me in-depth knowledge of the business use case and ne
  
 ## [Required Homework](#required):
 > Important details to look out for in the screenshots attached:
+>
 > Account ID: 548XXXXXXXXX
+>
 > Root Account Alias: wande-cloudbootcamp
+>
 > IAM admin user Alias: admin @ wande-cloudbootcamp
 
 
