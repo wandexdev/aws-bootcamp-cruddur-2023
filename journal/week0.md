@@ -209,11 +209,14 @@ Event Bridge basically sits in between decoupled services and it allows routing 
 - Used an Eventbridge rule to trigger the Lambda function 
 
 ### 3. Quiz on well-architected framework by TutorialDojo
-![Well Architechted Framework](tutorialdojo.png)
+![Well Architechted Framework](assets/wk0/tutorialdojo.png)
 - Took numerous quizzes to test my knowledge of the well-architected framework and their specific use cases.
 
 ### 4. Reviewed well Architected Tool
-
+![reveiw questions](assets/wk0/WAFtool.png)
+- I got on the Well Architected tool console
+- Defined a workload called **cruddur application**
+- Answered all 58 question across all six pillars of the WAF.
 
 ### 8. Research on Free Tier Service Limits:
 - Starting with **Amazon SNS** as it happens that they would be used a lot. I discovered that Amazon SNS is included in Free Tier, Each month, I would incur no charges for the first 1 million Amazon SNS requests, no charges for the first 100,000 notifications over HTTP, and no charges for the first 1,000 notifications over email. 
