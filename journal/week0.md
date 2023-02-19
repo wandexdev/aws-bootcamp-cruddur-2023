@@ -2,15 +2,21 @@
 ![billing and Architecture](assets/wk0/week0.png)
 
 ## Synopsis:
-Week 0 introduced and gave me in-depth knowledge of the business use case and needs of the cruddur application. The cost, security measures etc, estimates of the yet-to-be-built environment and the logical/conceptual setup of the app. My **Tasks** were some specific instructions listed in [Required Homework](#required) and an unrestricted [Homework Challenges](#challenges) to explore further. I first identified the resources needed to complete these tasks, mapped a study plan with clear objectives and timelines, and fostered relationships with people who seemed more evidently technical on the official discord server. As a result of all these, I was able to finish up and dive deeper into all that is needed to efficiently complete this project. 
+Week 0 introduced and gave me in-depth knowledge of the business use case and needs of the cruddur application. The cost, security measures etc, estimates of the yet-to-be-built environment and the logical/conceptual setup of the app. My **Tasks** were some specific instructions listed in [Required Homework](#required) and an unrestricted [Homework Challenges](#challenges) which enabled me explore further. I first identified the resources needed to complete these tasks, mapped a study plan with clear objectives and timelines, and fostered relationships with people who seemed more evidently technical on the official discord server. As a result of all these, I was able to finish up and dive deeper into all that is needed to efficiently complete this project. 
  
 ## [Required Homework](#required):
+> Important details to look out for in the screenshots attached:
+> Account ID: 548XXXXXXXXX
+> Root Account Alias: wande-cloudbootcamp
+> IAM admin user Alias: admin @ wande-cloudbootcamp
+
+
 1. **IAM Admin User**: Created an IAM admin user with admin access policy and generated AWS credentials from it.
 ![IAM admin user](assets/wk0/admin2.png)
-2. **MFA**: Enabled Multi Factor Authentication for the admin user's console access
-![MFA](assets/wk0/MFA.png)
+2. **MFA**: Enabled Multi Factor Authentication for the root and admin user's console access. I used Google authenticator to achieve this.
+![MFA](assets/wk0/mfa2.png)
 3. **Cloud Shell**: I launched my cloud shell on the AWS console and ran some commands on it
-![Cloud shell](assets/wk0/cloudshell.png)
+![Cloud shell](assets/wk0/cshell.png)
 4. **AWS CLI**: Using Gitpod, I synced the cruddur repository on Github with a web VScode then installed, and configured AWS CLI. 
 - I added the gitpod task below to my `.gitpod.yml` file to use partial autoprompt mode in debugging.
 ![gitpod file](assets/wk0/gitpod.png)
@@ -30,7 +36,7 @@ Week 0 introduced and gave me in-depth knowledge of the business use case and ne
 ![aws cli](assets/wk0/confirmconfigure.png)
 
 5. **Billing Alarm**: Upon authorizing Billing Alerts in Root Account, I was set to create a billing Alarm via the AWS CLI.
-* created a Simple Notification Service(SNS) Topic and setup a subscription to serve it
+* I created a Simple Notification Service(SNS) Topic and setup a subscription to serve it
 * Here's the command ran on gitpod workspace below:
 ![SNS topic](assets/wk0/snsconfig.png)
 * Here is the Email Confirmation above:
@@ -81,7 +87,7 @@ Week 0 introduced and gave me in-depth knowledge of the business use case and ne
 
 * Here's the end result on the console:
 ![metric](assets/wk0/metrics.png)
-6. **Budget**: I created this also in the AWS CLI using Gitpod
+6. **Budget**: I created a monthly **$10** spend budget also in the AWS CLI using Gitpod while I already had a zero-spend budjet to watch if i had left the free tier limits.
 - Firstly fill in configuration into a new file named `budjet.json` present in the aws folder generated when installed.
 - Find the Configuration Syntax below:
 
@@ -172,7 +178,8 @@ Diagram Flow:
 ![logical diagram](assets/wk0/logical.png)
 - The Logical Diagram otherwise called Architecture Diagram is a more detailed type of diagram that shows the distributed system componets and it communicates the work flow to the engineers involved in building it.
 
-## [Homework Challenges](#challenges)
+## [Homework Challenges](#challenges):
+
 
 
 ## References:
