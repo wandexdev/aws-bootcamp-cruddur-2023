@@ -219,7 +219,7 @@ Event Bridge basically sits in between decoupled services and it allows routing 
 - Answered all 58 question across all six pillars of the WAF.
 
 ### 5. CI/CD pipeline with Jenkins for Cruddur
-![CI/CD](assets/wk0/ci-cd1.png)
+![CI/CD](assets/wk0/ci-cdd.png)
 - This is my first time ever researching on Jenkins or a CI/CD pipeline but it was a very eventful research
 - I look forward to perfectly doing more tecnical work on this. 
 
