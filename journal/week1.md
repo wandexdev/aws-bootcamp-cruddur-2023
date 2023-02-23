@@ -9,6 +9,7 @@ Week 1 deep dived into functional use cases of docker. I started learning about 
 > **PS**
 >
 > This is the Gitpod workspaces version
+
 Succeeded in containerizing the front and back end cruddur app codebases and testing them with gitpod's url to affirm the success. Here's the final outpu.
 ![Gitpod Final](assets/wk1/gitpodfinal.png)
 - Started by writing a docker file for backend end(Python-flask), defined the paths and commands needed to build the image for the container. Find the well dcumented docker file  [here](https://github.com/wandexdev/aws-bootcamp-cruddur-2023/blob/main/backend-flask/Dockerfile)
