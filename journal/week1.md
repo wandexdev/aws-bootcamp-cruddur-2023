@@ -71,7 +71,15 @@ Succeeded in containerizing the front and back end cruddur app codebases and tes
 - Final perfect output:
 ![Backend Endpoint](assets/wk1/backendEP.png)
 ### 4. React Page for Notifications
-- 
+- React js is the language used to write the frontend application code of the cruddur application.
+- I created  ```NotificationsFeedPage.js``` and ```NotificationsFeedPage.css``` files.
+- Sourced the ```NotificationsFeedPage.js``` file in the ```app.py``` file.
+- ```DesktopNavigation.js``` already sorted
+-Here's the final perfect output:
+![React](assets/wk1/frontreact.png)
 ### 5. DynamoDB Local Container
 ### 6. Postgres Container
 ### 7.
+
+## Refrences:
+- 
