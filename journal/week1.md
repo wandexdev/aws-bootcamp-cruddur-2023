@@ -53,11 +53,17 @@ Succeeded in containerizing the front and back end cruddur app codebases and tes
 ![Gitpod Final](assets/wk1/gitpodfinal.png)
 #### ALL CONTAINERS WITH DOCKER COMPOSE:
 - Docker Compmose allows multiple containers defined in its .yml file to run them simultenously, created the yaml file [here](https://github.com/wandexdev/aws-bootcamp-cruddur-2023/blob/main/docker-compose.yml) in the root directory.
-- Mounted volumes to the Host OS's directory by binding XXXXXX and this enables me make live changes to the application code and it syncs to the one in the container
+- Mounted volumes to the Host OS's directory by binding XXXXXX and this enables me make live changes to the application code in my directory while the changes syncs with the one in the container
 ![volumes](assets/wk1/dockercompose.png)
 - Ran ```docker compose up``` and it ran the containers. 
 ### 2. Notification Endpoint for the OpenAI Document
+- Open API (formerly called SWAGGER) is a standard for defining general API's. It esaily augments services like API Gateway, api documentaion etc
+- The Endpoint documentation can be uploaded to [readme.com](https://readme.com/) where the API documentation would be transformed to interactive hubs that help developers.
+- I added an endpoint for notification in [this](https://github.com/wandexdev/aws-bootcamp-cruddur-2023/blob/main/backend-flask/openapi-3.0.yml) file. Here is the file and **OpenAPI SwaggerUI preveiw**:
+![Open API](assets/wk1/openapinotification.png)
+![Open API](assets/wk1/openapi2.png)
 ### 3. Flask Backend Endpoint for Notifications
+
 ### 4. React Page for Notifications
 ### 5. DynamoDB Local Container
 ### 6. Postgres Container
