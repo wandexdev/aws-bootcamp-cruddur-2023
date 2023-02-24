@@ -59,12 +59,19 @@ Succeeded in containerizing the front and back end cruddur app codebases and tes
 ### 2. Notification Endpoint for the OpenAI Document
 - Open API (formerly called SWAGGER) is a standard for defining general API's. It esaily augments services like API Gateway, api documentaion etc
 - The Endpoint documentation can be uploaded to [readme.com](https://readme.com/) where the API documentation would be transformed to interactive hubs that help developers.
-- I added an endpoint for notification in [this](https://github.com/wandexdev/aws-bootcamp-cruddur-2023/blob/main/backend-flask/openapi-3.0.yml) file. Here is the file and **OpenAPI SwaggerUI preveiw**:
+- I added an endpoint for notification in [this](https://github.com/wandexdev/aws-bootcamp-cruddur-2023/blob/main/backend-flask/openapi-3.0.yml) file. Here is the file and **OpenAPI SwaggerUI** preveiw:
 ![Open API](assets/wk1/openapinotification.png)
 ![Open API](assets/wk1/openapi2.png)
 ### 3. Flask Backend Endpoint for Notifications
-
+- The home section has similar schema and features with the intended notification section so the values were duplicated and refactored.
+- I created the ```notifications_activites.py``` file from ```home_activities.py``` file.
+- Sourced the ```notifications_activites.py``` file in the ```app.py``` file.
+- Redirected the url from ```app.py``` to ```notifications_activites.py```
+- Troubleshooted an error that lead to no json output when testing the Endpoint URL at ```.../api/activities/notifications```
+- Final perfect output:
+![Backend Endpoint](assets/wk1/backendEP.png)
 ### 4. React Page for Notifications
+- 
 ### 5. DynamoDB Local Container
 ### 6. Postgres Container
 ### 7.
