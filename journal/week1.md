@@ -33,7 +33,7 @@ Succeeded in containerizing the front and back end cruddur app codebases and tes
 - Test-Run the gitpod url with ```/api/activities/home```
 ![backend json](assets/wk1/jsonbackend.png)
 - Finally built the image with ```docker build -t flask-backend ./flask-backend``` from the repository root directory
-- A running image is a container so I ran ```docker container run --rm -p 4567:4567 -d backend-flask```
+- A running image is a **container** so I ran ```docker container run --rm -p 4567:4567 -d backend-flask``` to run the image.
 >
 > ```--rm``` kills and remove the container once stopped to prevent pile up
 >
@@ -43,6 +43,22 @@ Succeeded in containerizing the front and back end cruddur app codebases and tes
 
 <!--- place holder for ensuring environmet variables are saved-->
 #### THE FRONTEND:
-Started the **Frontend (REACT) with writing a docker file also, in the frontend directory. Find it [here](https://github.com/wandexdev/aws-bootcamp-cruddur-2023/blob/main/frontend-react-js/Dockerfile)
+- Started the **Frontend (REACT-JS) with writing a docker file also, in the frontend directory. Find it [here](https://github.com/wandexdev/aws-bootcamp-cruddur-2023/blob/main/frontend-react-js/Dockerfile)
+- Ran ```npm i``` in the root directory to prepare the envirnment. NPM is a node package manager, it helps to manage the node packages for the application to properly run.
+- Built the image with ```docker build -t frontend-react-js```
+> ```-t``` option is specifying the image name and when paired with ```:<anything>```, 
+>
+> it gives name + tag e.g ```mysql:latest```
+- Ran the image and turn into a container with ```docker run -p 3000:3000 -d frontend-react-js```
 ![Gitpod Final](assets/wk1/gitpodfinal.png)
-### 2. Configure
+#### ALL CONTAINERS WITH DOCKER COMPOSE:
+- Docker Compmose allows multiple containers defined in its .yml file to run them simultenously, created the yaml file [here](https://github.com/wandexdev/aws-bootcamp-cruddur-2023/blob/main/docker-compose.yml) in the root directory.
+- Mounted volumes to the Host OS's directory by binding XXXXXX and this enables me make live changes to the application code and it syncs to the one in the container
+![volumes](assets/wk1/dockercompose.png)
+- Ran ```docker compose up``` and it ran the containers. 
+### 2. Notification Endpoint for the OpenAI Document
+### 3. Flask Backend Endpoint for Notifications
+### 4. React Page for Notifications
+### 5. DynamoDB Local Container
+### 6. Postgres Container
+### 7.
