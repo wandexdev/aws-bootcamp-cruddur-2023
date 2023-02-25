@@ -1,1 +1,1 @@
-docker/dynamodb/*
+docker/**/*
