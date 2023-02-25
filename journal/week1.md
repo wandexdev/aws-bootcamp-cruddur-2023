@@ -92,7 +92,52 @@ Here is a little summary before the details:
 
 ### 1. DockerFile CMD ran as an external SHELL Script
 - I created two shell scripts. Each for the docker files in both frontend and backend directories.
-- For backend, I created the ```flash.sh``` file with the entry points command in it insta
+- For **backend**, I created the ```flash.sh``` file with the entry points commands updated to it. I added the permissions for the file to run also in the docker file
+    ```shell
+        #!/bin/bash
+        python3 -m flask run --host=0.0.0.0 --port=4567
+    ```
+ - Replace 
+
+    ```Dockerfile
+    CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
+    ``` 
+
+    with:
+
+```Dockerfile
+        # Copy the shell script to the container
+        COPY flask.sh flask.sh
+
+        # Give Permissions to the script
+        RUN chmod +x flask.sh
+
+        # Execute external script instead of CMD commands
+        CMD [ "/bin/bash", "flask.sh" ] 
+```
+- For the **frontend**, I created the ```npm.sh``` file with the entry points commands updated to it. I added the permissions for the file to run also in the docker file
+    ```shell
+        #!/bin/sh
+        npm start
+    ```
+ - Replace 
+
+```Dockerfile
+    CMD ["npm", "start"]
+```
+    with:
+```Dockerfile
+        # Copy the shell script to the container
+        COPY flask.sh npm.sh
+
+        # Give Permissions to the script
+        RUN chmod +x npm.sh
+
+        # Execute external script instead of CMD commands
+        CMD [ "/bin/bash", "npm.sh" ] 
+```
+
+- Build and run container with ```docker-compose up -d``` 
 ### 2. Pushed and tagged an image to DockerHub
 ### 3. Used multi-stage building for a Dockerfile build
 ### 4. Implemented a healthcheck in the Version 3 Docker compose file
@@ -101,4 +146,5 @@ Here is a little summary before the details:
 
 
 ## Refrences:
-- 
+- [Github Syntax Highlighting](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
+- [How To Run Custom Script Inside Docker](https://devopscube.com/run-scripts-docker-arguments/)
