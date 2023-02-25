@@ -122,20 +122,22 @@ Here is a little summary before the details:
     ```
  - Replace 
 
-```Dockerfile
-    CMD ["npm", "start"]
-```
+    ```Dockerfile
+        CMD ["npm", "start"]
+    ```
+
     with:
-```Dockerfile
-        # Copy the shell script to the container
-        COPY flask.sh npm.sh
 
-        # Give Permissions to the script
-        RUN chmod +x npm.sh
+    ```Dockerfile
+            # Copy the shell script to the container
+            COPY flask.sh npm.sh
 
-        # Execute external script instead of CMD commands
-        CMD [ "/bin/bash", "npm.sh" ] 
-```
+            # Give Permissions to the script
+            RUN chmod +x npm.sh
+
+            # Execute external script instead of CMD commands
+            CMD [ "/bin/bash", "npm.sh" ] 
+    ```
 
 - Build and run container with ```docker-compose up -d``` 
 ### 2. Pushed and tagged an image to DockerHub
