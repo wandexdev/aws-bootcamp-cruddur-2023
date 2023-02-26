@@ -78,8 +78,21 @@ Succeeded in containerizing the front and back end cruddur app codebases and tes
 -Here's the final perfect output:
 ![React](assets/wk1/frontreact.png)
 ### 5. DynamoDB Local Container:
+- I added Dynamo db content (volumes, port binding etc) to the docker compose, and tested the data base by creating essentials in it from the terminal
+- Here's the docker compose file:
+![dynamo](assets/wk1/dynamo.png)
+- Created a **table**, here are the commands and output:
+![table](assets/wk1/dynamodbtable.png)
+- Created an **item**:
+![item](assets/wk1/item.png)
+- Listed Tables with:
+```shell
+    aws dynamodb list-tables --endpoint-url http://localhost:8000
+```
+![list tables](assets/wk1/)
+- Got **records**:
+![table](assets/wk1/records.png)
 ### 6. Postgres Container:
-### 7.
 
 ## [Homework Challenges](#challenges)
 Here is a little summary before the details:
