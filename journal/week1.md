@@ -78,6 +78,7 @@ Succeeded in containerizing the front and back end cruddur app codebases and tes
 -Here's the final perfect output:
 ![React](assets/wk1/frontreact.png)
 ### 5. DynamoDB Local Container:
+- DynamoDB is a fully managed NoSQL database service that supports key–value and document data structures and it institutes from Amazon Web Services(AWS)
 - I added Dynamo db content (volumes, port binding etc) to the docker compose, and tested the data base by creating essentials in it from the terminal
 - Here's the docker compose file:
 ![dynamo](assets/wk1/dynamo.png)
@@ -90,9 +91,17 @@ Succeeded in containerizing the front and back end cruddur app codebases and tes
     aws dynamodb list-tables --endpoint-url http://localhost:8000
 ```
 ![list tables](assets/wk1/)
-- Got **records**:
+- Scan for **records**:
 ![table](assets/wk1/records.png)
 ### 6. Postgres Container:
+- PostgreSQL, also known as Postgres, is a free and open-source relational database management system emphasizing that SQL compliant.
+- I added Postgres content (volumes, port binding etc) to the docker compose file:
+![postgres](assets/wk1/posgre.png)
+- Postgres requires a driver/client installed before running properly in the environment its set to run so I added the driver confirugations to my gitpod yaml file.
+![pgsql Gitpod](assets/wk1/pgsqlgitpod.png)
+- Installed database explorer extension on my gitpod's vscode which I added to the gitpod's yaml fileand used to test the functionality of the postgres database
+![postgres](assets/wk1/)
+ 
 
 ## [Homework Challenges](#challenges)
 Here is a little summary before the details:
