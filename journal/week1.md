@@ -99,8 +99,9 @@ Succeeded in containerizing the front and back end cruddur app codebases and tes
 ![postgres](assets/wk1/posgre.png)
 - Postgres requires a driver/client installed before running properly in the environment its set to run so I added the driver confirugations to my gitpod yaml file.
 ![pgsql Gitpod](assets/wk1/pgsqlgitpod.png)
-- Installed database explorer extension on my gitpod's vscode which I added to the gitpod's yaml fileand used to test the functionality of the postgres database
-![postgres](assets/wk1/)
+- Installed database explorer extension on my gitpod's vscode which I added to the gitpod's yaml file and used to test the functionality of the postgres database.
+- On the terminal, I ran ```psql -U postgres --host localhost``` entered the password set then ```\l``` when let in the pgsql terminal.
+![postgres](assets/wk1/defaulttables)
  
 
 ## [Homework Challenges](#challenges)
@@ -163,10 +164,35 @@ Here is a little summary before the details:
 
 - Build and run container with ```docker-compose up -d``` 
 ### 2. Pushed and tagged an image to DockerHub
+- Docker Hub is kind of a registry where all the Docker Images are placed. Developers can select images from Docker Hub and use them to create containers or other images. 
+Docker Hub is the world's largest registry of image containers.
+- 
 ### 3. Used multi-stage building for a Dockerfile build
 ### 4. Implemented a healthcheck in the Version 3 Docker compose file
 ### 5. Installed Docker on localmachine and got the same containers running outside my Gitpod
-### 6. Launched an EC2 instance that has docker installed, and pulled an image to demonstrate my knowledge of docker processes. 
+- I used an ubuntu VM as my local machine
+- Installed docker in it with the following commands individually:
+```shell
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce -y
+sudo systemctl status docker
+```
+- Installation Confirmation
+![docker](assets/wk1/dockerrunning.png)
+- Ran Docker commands without sudo by:
+```sudo usermod -aG docker ${USER}```
+- Git cloned the cruddur repository to get the application code structure
+- Copied contents of ```docker-compose.yml``` to new one created for local named ```docker-compose_local.yml```. 
+- Removed all gitpod envionment variables
+![docker](assets/wk1/)
+### 6. Launched an EC2 instance that has docker installed, and pulled an image to demonstrate my knowledge of docker processes.
+- 
+
 
 
 ## Refrences:
