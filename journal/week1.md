@@ -90,7 +90,6 @@ Succeeded in containerizing the front and back end cruddur app codebases and tes
 ```shell
     aws dynamodb list-tables --endpoint-url http://localhost:8000
 ```
-![list tables](assets/wk1/)
 - Scan for **records**:
 ![table](assets/wk1/records.png)
 ### 6. Postgres Container:
@@ -101,7 +100,7 @@ Succeeded in containerizing the front and back end cruddur app codebases and tes
 ![pgsql Gitpod](assets/wk1/pgsqlgitpod.png)
 - Installed database explorer extension on my gitpod's vscode which I added to the gitpod's yaml file and used to test the functionality of the postgres database.
 - On the terminal, I ran ```psql -U postgres --host localhost``` entered the password set then ```\l``` when let in the pgsql terminal.
-![postgres](assets/wk1/defaulttables)
+![postgres](assets/wk1/defaulttables.png)
  
 
 ## [Homework Challenges](#challenges)
@@ -168,6 +167,73 @@ Here is a little summary before the details:
 Docker Hub is the world's largest registry of image containers.
 - 
 ### 3. Used multi-stage building for a Dockerfile build
+- Did two multi stage build with the first having a new **node** being built from an **alphine node** layer and the second from **nginx alpine** being built from the node image built in multi stage 1.
+- Here are the end results docker files:
+- **Multi-stage build one** Dockerfile:
+```Dockerfile
+    FROM node:16.18 AS build
+
+    WORKDIR /frontend-react-js
+
+    COPY package*.json ./
+
+    RUN npm install
+
+    COPY . .
+
+    RUN npm run build
+
+
+    # MULTIBUILD
+    FROM node:16.18-alpine AS runtime 
+
+    WORKDIR /frontend-react-js
+
+    COPY --from=build /frontend-react-js /frontend-react-js
+
+    # CHECK FRONTEND DISK SIZE
+    RUN du -hc -d 1 /frontend-react-js
+
+    EXPOSE 3000
+
+    CMD ["npm", "start"]
+```
+- **Multi-stage build two** Dockerfile :
+```Dockerfile
+    FROM node:16.18 AS build
+
+ENV REACT_APP_BACKEND_URL=http://127.0.0.1:4567
+
+WORKDIR /frontend-react-js
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+# MULTIBUILD
+FROM nginx:stable-alpine AS runtime
+
+WORKDIR /usr/share/nginx/html
+
+# Remove default nginx static resources
+RUN rm -rf ./*
+
+# Copy build files from stage1 (it has all react weeb files)
+COPY --from=build /frontend-react-js/build .
+
+# Installs a custom nginx configuration file
+COPY nginx-conf/nginx.default.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+
+# Base nginx image defines a start command for the container that launches nginx on port 80
+# nO Need for CMD as it's in the image.
+# CMD ["nginx", "-g", "daemon off;"]
+```
 ### 4. Implemented a healthcheck in the Version 3 Docker compose file
 ### 5. Installed Docker on localmachine and got the same containers running outside my Gitpod
 - I used an ubuntu VM as my local machine
@@ -182,16 +248,23 @@ apt-cache policy docker-ce
 sudo apt install docker-ce -y
 sudo systemctl status docker
 ```
+
 - Installation Confirmation
-![docker](assets/wk1/dockerrunning.png)
+    ![docker](assets/wk1/dockerrunning.png)
 - Ran Docker commands without sudo by:
-```sudo usermod -aG docker ${USER}```
-- Git cloned the cruddur repository to get the application code structure
+```
+sudo usermod -aG docker ${USER}
+```
+- Git cloned the cruddur repository to get the application code structure on my VM
 - Copied contents of ```docker-compose.yml``` to new one created for local named ```docker-compose_local.yml```. 
-- Removed all gitpod envionment variables
+- Removed all gitpod envionment variables and replaced them with localhost
 ![docker](assets/wk1/)
 ### 6. Launched an EC2 instance that has docker installed, and pulled an image to demonstrate my knowledge of docker processes.
-- 
+- Launched an EC2 instance with docker nstalled at lauch by putting my docker command in this bash script as user data:
+```shell
+    #!/bin/bash
+
+``` 
 
 
 
