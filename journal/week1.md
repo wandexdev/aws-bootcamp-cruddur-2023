@@ -164,7 +164,15 @@ Here is a little summary before the details:
 - Build and run container with ```docker-compose up -d``` 
 ### 2. Pushed and tagged an image to DockerHub
 - Docker Hub is kind of a registry where all the Docker Images are placed. Developers can select images from Docker Hub and use them to create containers or other images. Docker Hub is the world's largest registry of image containers.
-- 
+- I signed up for a free docker hub account, created a new repository.
+- Tagged the image and attached to repository because its already built and existing.
+```shell
+    docker tag <existing-image> <hub-user>/<repo-name>[:<tag>]
+```
+- Pushed the repository to the regitry specifyd by the name or tag
+- Loggeed in when push failed using the ```docker login``` command and pushed successfully.
+![docker push](assets/wk1/dockerpush.png)
+![docker push](assets/wk1/dockerhubp.png)
 ### 3. Used multi-stage building for a Dockerfile build
 - Did two multi stage build with the first having a new **node** being built from an **alphine node** layer and the second from **nginx alpine** being built from the node image built in multi stage 1.
 - Here are the end results docker files:
@@ -250,7 +258,7 @@ sudo systemctl status docker
 ```
 
 - Installation Confirmation
-    ![docker](assets/wk1/dockerrunning.png)
+    ![docker](assets/wk1/dockernew.png)
 - Ran Docker commands without sudo by:
 ```
 sudo usermod -aG docker ${USER}
@@ -258,7 +266,9 @@ sudo usermod -aG docker ${USER}
 - Git cloned the cruddur repository to get the application code structure on my VM
 - Copied contents of ```docker-compose.yml``` to new one created for local named ```docker-compose_local.yml```. 
 - Removed all gitpod envionment variables in docker compose and replaced them with localhost
-- Built and ran the containers
+- Built and ran the containers with ```docker compose -f "docker-compose_local.yml" up```
+![docker](assets/wk1/dockercomposecmd.png)
+![docker containers](assets/wk1/images.png)
 ### 6. Launched an EC2 instance that has docker installed, and pulled an image to demonstrate my knowledge of docker processes.
 - Launched an EC2 instance with docker nstalled at lauch by putting my docker command in this bash script as user data:
 ```shell
@@ -278,3 +288,4 @@ sudo usermod -aG docker ${USER}
 - [Github Syntax Highlighting](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
 - [How To Run Custom Script Inside Docker](https://devopscube.com/run-scripts-docker-arguments/)
 - [How to dockerize a react flask nginx project](https://blog.miguelgrinberg.com/post/how-to-dockerize-a-react-flask-project)
+- [Docker docs: Managing repositories](https://docs.docker.com/docker-hub/repos/#:~:text=To%20push%20an%20image%20to,docs%2Fbase%3Atesting%20)
