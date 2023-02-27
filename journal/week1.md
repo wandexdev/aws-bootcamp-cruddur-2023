@@ -163,8 +163,7 @@ Here is a little summary before the details:
 
 - Build and run container with ```docker-compose up -d``` 
 ### 2. Pushed and tagged an image to DockerHub
-- Docker Hub is kind of a registry where all the Docker Images are placed. Developers can select images from Docker Hub and use them to create containers or other images. 
-Docker Hub is the world's largest registry of image containers.
+- Docker Hub is kind of a registry where all the Docker Images are placed. Developers can select images from Docker Hub and use them to create containers or other images. Docker Hub is the world's largest registry of image containers.
 - 
 ### 3. Used multi-stage building for a Dockerfile build
 - Did two multi stage build with the first having a new **node** being built from an **alphine node** layer and the second from **nginx alpine** being built from the node image built in multi stage 1.
@@ -202,39 +201,40 @@ Docker Hub is the world's largest registry of image containers.
 ```Dockerfile
     FROM node:16.18 AS build
 
-ENV REACT_APP_BACKEND_URL=http://127.0.0.1:4567
+    ENV REACT_APP_BACKEND_URL=http://127.0.0.1:4567
 
-WORKDIR /frontend-react-js
+    WORKDIR /frontend-react-js
 
-COPY package*.json ./
+    COPY package*.json ./
 
-RUN npm install
+    RUN npm install
 
-COPY . .
+    COPY . .
 
-RUN npm run build
+    RUN npm run build
 
-# MULTIBUILD
-FROM nginx:stable-alpine AS runtime
+    # MULTIBUILD
+    FROM nginx:stable-alpine AS runtime
 
-WORKDIR /usr/share/nginx/html
+    WORKDIR /usr/share/nginx/html
 
-# Remove default nginx static resources
-RUN rm -rf ./*
+    # Remove default nginx static resources
+    RUN rm -rf ./*
 
-# Copy build files from stage1 (it has all react weeb files)
-COPY --from=build /frontend-react-js/build .
+    # Copy build files from stage1 (it has all react weeb files)
+    COPY --from=build /frontend-react-js/build .
 
-# Installs a custom nginx configuration file
-COPY nginx-conf/nginx.default.conf /etc/nginx/conf.d/default.conf
+    # Installs a custom nginx configuration file
+    COPY nginx-conf/nginx.default.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+    EXPOSE 80
 
-# Base nginx image defines a start command for the container that launches nginx on port 80
-# nO Need for CMD as it's in the image.
-# CMD ["nginx", "-g", "daemon off;"]
+    # Base nginx image defines a start command for the container that launches nginx on port 80
+    # nO Need for CMD as it's in the image.
+    # CMD ["nginx", "-g", "daemon off;"]
 ```
 ### 4. Implemented a healthcheck in the Version 3 Docker compose file
+- 
 ### 5. Installed Docker on localmachine and got the same containers running outside my Gitpod
 - I used an ubuntu VM as my local machine
 - Installed docker in it with the following commands individually:
@@ -257,17 +257,24 @@ sudo usermod -aG docker ${USER}
 ```
 - Git cloned the cruddur repository to get the application code structure on my VM
 - Copied contents of ```docker-compose.yml``` to new one created for local named ```docker-compose_local.yml```. 
-- Removed all gitpod envionment variables and replaced them with localhost
-![docker](assets/wk1/)
+- Removed all gitpod envionment variables in docker compose and replaced them with localhost
+- Built and ran the containers
 ### 6. Launched an EC2 instance that has docker installed, and pulled an image to demonstrate my knowledge of docker processes.
 - Launched an EC2 instance with docker nstalled at lauch by putting my docker command in this bash script as user data:
 ```shell
     #!/bin/bash
-
+    sudo apt-get update
+    sudo apt-get -y install apt-transport-https ca-certificates curl gnupg lsb-release
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt-get -y install docker-ce docker-ce-cli containerd.io
+    sudo usermod -aG docker ${USER}
 ``` 
-
+- Pulled the images uploaded to docker hub
 
 
 ## Refrences:
 - [Github Syntax Highlighting](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
 - [How To Run Custom Script Inside Docker](https://devopscube.com/run-scripts-docker-arguments/)
+- [How to dockerize a react flask nginx project](https://blog.miguelgrinberg.com/post/how-to-dockerize-a-react-flask-project)
