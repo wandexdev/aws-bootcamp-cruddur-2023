@@ -106,9 +106,10 @@ Succeeded in containerizing the front and back end cruddur app codebases and tes
 ## [Homework Challenges](#challenges)
 Here is a little summary before the details:
 - [x] Ran the dockerfile CMD as an external Shell (.sh) script.
-- [x] Pushed and tagged an image to DockerHub.
-- [x] Used multi-stage building for a Dockerfile build
-- [x] Implemented a healthcheck in the Version 3 Docker compose file
+- [x] Added frontend dependencies and public port configurations to prepare my Gitpod environment at launch. 
+- [x] Pushed and tagged an image publicly to DockerHub.
+- [x] Used multi-stage building for 2 Dockerfiles build
+- [x] Implemented 2 healthchecks in the Version 3 Docker compose file
 - [x] Installed Docker on localmachine and got the same containers running outside my Gitpod.
 - [x] Launched an EC2 instance that has docker installed, and pulled an image to demonstrate my knowledge of docker processes. 
 
@@ -242,7 +243,8 @@ Here is a little summary before the details:
     # CMD ["nginx", "-g", "daemon off;"]
 ```
 ### 4. Implemented a healthcheck in the Version 3 Docker compose file
-- Health check when implemented would check URL after every set **interval**, at the set **start_period** for number of set **retries**.
+- A Health check is a command used to determine the health of a running container.
+- The health check when implemented would check the URL after every set **interval**, at the set **start_period** for number of set **retries**.
 - Implemented for both front and back end in the ```docker-compose.yml``` file where I inputed the right port for each. Check file [here](https://github.com/wandexdev/aws-bootcamp-cruddur-2023/blob/main/docker-compose.yml)
 ```shell
     healthcheck:
@@ -290,12 +292,13 @@ sudo usermod -aG docker ${USER}
     sudo apt-get -y install docker-ce docker-ce-cli containerd.io
     sudo usermod -aG docker ${USER}
 ``` 
-![EC2 docker istance](assets/wk1/docker-demo.png)
-- Pulled the images uploaded to docker hub
-
+![EC2 docker istance](assets/wk1/sdocker-demo.png)
+- Pulled the images uploaded to docker hub in my terminal with the ```docker pull``` command
+![EC2 docker pull](assets/wk1/dockerpull.png)
 
 ## Refrences:
 - [Github Syntax Highlighting](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
 - [How To Run Custom Script Inside Docker](https://devopscube.com/run-scripts-docker-arguments/)
 - [How to dockerize a react flask nginx project](https://blog.miguelgrinberg.com/post/how-to-dockerize-a-react-flask-project)
 - [Docker docs: Managing repositories](https://docs.docker.com/docker-hub/repos/#:~:text=To%20push%20an%20image%20to,docs%2Fbase%3Atesting%20)
+-[How to Add a Health Check to Your Docker Container](https://howchoo.com/devops/how-to-add-a-health-check-to-your-docker-container)
