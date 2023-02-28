@@ -243,7 +243,14 @@ Here is a little summary before the details:
 ```
 ### 4. Implemented a healthcheck in the Version 3 Docker compose file
 - Health check when implemented would check URL after every set **interval**, at the set **start_period** for number of set **retries**.
-- Implemented for both front and back end in the ```docker-compose.yml``` file.
+- Implemented for both front and back end in the ```docker-compose.yml``` file where I inputed the right port for each. Check file [here](https://github.com/wandexdev/aws-bootcamp-cruddur-2023/blob/main/docker-compose.yml)
+```shell
+    healthcheck:
+      test: curl --fail "https://<SPECIFIC PORT>-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}/api/activities/home" || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 5
+```
 ### 5. Installed Docker on localmachine and got the same containers running outside my Gitpod
 - I used an ubuntu VM as my local machine
 - Installed docker in it with the following commands individually:
