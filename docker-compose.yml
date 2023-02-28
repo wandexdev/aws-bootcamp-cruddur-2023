@@ -7,16 +7,30 @@ services:
     build: ./backend-flask
     ports:
       - "4567:4567"
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}/api/activities/home || exit 1 # if wget cmd failed, will execute {exit 1}
+      interval: 20s 
+      retries: 4
+      start_period: 20s 
+      timeout: 5s   
     volumes:
       - ./backend-flask:/backend-flask
+
   frontend-react-js:
     environment:
       REACT_APP_BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
     build: ./frontend-react-js
     ports:
       - "3000:3000"
+    healthcheck:
+      test: curl --fail https://3000-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST} || exit 1
+      interval: 30s
+      retries: 4
+      start_period: 30s
+      timeout: 20s 
     volumes:
       - ./frontend-react-js:/frontend-react-js
+
   dynamodb-local:
     # https://stackoverflow.com/questions/67533058/persist-local-dynamodb-data-in-volumes-lack-permission-unable-to-open-databa
     # We needed to add user:root to get this working.

@@ -248,8 +248,9 @@ Here is a little summary before the details:
     healthcheck:
       test: curl --fail "https://<SPECIFIC PORT>-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}/api/activities/home" || exit 1
       interval: 30s
-      timeout: 10s
-      retries: 5
+      start_period: 30s
+      timeout: 20s
+      retries: 4
 ```
 ### 5. Installed Docker on localmachine and got the same containers running outside my Gitpod
 - I used an ubuntu VM as my local machine
