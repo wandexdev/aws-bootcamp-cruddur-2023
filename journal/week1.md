@@ -242,7 +242,8 @@ Here is a little summary before the details:
     # CMD ["nginx", "-g", "daemon off;"]
 ```
 ### 4. Implemented a healthcheck in the Version 3 Docker compose file
-- 
+- Health check when implemented would check URL after every set **interval**, at the set **start_period** for number of set **retries**.
+- Implemented for both front and back end in the ```docker-compose.yml``` file.
 ### 5. Installed Docker on localmachine and got the same containers running outside my Gitpod
 - I used an ubuntu VM as my local machine
 - Installed docker in it with the following commands individually:
@@ -281,6 +282,7 @@ sudo usermod -aG docker ${USER}
     sudo apt-get -y install docker-ce docker-ce-cli containerd.io
     sudo usermod -aG docker ${USER}
 ``` 
+![EC2 docker istance](assets/wk1/docker-demo.png)
 - Pulled the images uploaded to docker hub
 
 
