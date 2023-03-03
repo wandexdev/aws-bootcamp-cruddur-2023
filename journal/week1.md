@@ -268,7 +268,7 @@ sudo apt install docker-ce -y
 sudo systemctl status docker
 ```
 
-- Installation Confirmation
+- Installation confirmation br runnin ```sudo systemctl status docker```
     ![docker](assets/wk1/dockernew.png)
 - Ran Docker commands without sudo by:
 ```
