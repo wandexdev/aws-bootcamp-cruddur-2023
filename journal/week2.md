@@ -81,8 +81,8 @@ with tracer.start_as_current_span("http-handler"):
 ```python
 span = trace.get_current_span()
 span.set_attribute("user.id", user.id())
-
 ```
+![honeycomb](assets/wk2/honeycomblogs.png)
 ### 2. Run Queries to explore traces within Honeycomb.io
 ### 3. Instrument AWS X-Ray into backend flask app
 ### 4. Configure, provision X-Ray daemon within docker-compose 
