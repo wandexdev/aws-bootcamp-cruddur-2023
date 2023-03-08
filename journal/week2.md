@@ -32,6 +32,7 @@ opentelemetry-instrumentation-requests
 ```
 - run:
 ```pip install -r requirements.txt```
+![honeycomb](assets/wk2/pipinstalltxt.png)
 - Next step is adding the initializion lines to the flaskapp.py file and make comments to distinguish. These updates will create and initialize a tracer and Flask instrumentation to send data to Honeycomb:
 ```python
 from opentelemetry import trace
@@ -63,8 +64,10 @@ RequestsInstrumentor().instrument()
     - cd to root folder
     - Docker Compose up
     - All set and receiving data
-![honeycomb](assets/wk2/)
-![honeycomb](assets/wk2/)
+![honeycomb](assets/wk2/honeycombhome.png)
+![honeycomb](assets/wk2/tracehoney.png)
+- To debug or test if youre unsure of the api key is coming from, try [honeycomb-whoami.glitch.me](honeycomb-whoami.glitch.me)
+
 ### 2. Run Queries to explore traces within Honeycomb.io
 ### 3. Instrument AWS X-Ray into backend flask app
 ### 4. Configure, provision X-Ray daemon within docker-compose 
