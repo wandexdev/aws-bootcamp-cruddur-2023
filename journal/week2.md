@@ -67,7 +67,22 @@ RequestsInstrumentor().instrument()
 ![honeycomb](assets/wk2/honeycombhome.png)
 ![honeycomb](assets/wk2/tracehoney.png)
 - To debug or test if youre unsure of the api key is coming from, try [honeycomb-whoami.glitch.me](honeycomb-whoami.glitch.me)
+-Hardcode spans: The code is to create spans for the backend flask
+- go to honey comb docs for open telemetry and python
+```python
+from opentelemetry import trace
 
+tracer = trace.get_tracer(__name__)
+with tracer.start_as_current_span("http-handler"):
+    with tracer.start_as_current_span("my-cool-function"):
+        # do something
+```
+- Adding attributes to the span we created
+```python
+span = trace.get_current_span()
+span.set_attribute("user.id", user.id())
+
+```
 ### 2. Run Queries to explore traces within Honeycomb.io
 ### 3. Instrument AWS X-Ray into backend flask app
 ### 4. Configure, provision X-Ray daemon within docker-compose 
@@ -80,3 +95,7 @@ RequestsInstrumentor().instrument()
 ## References:
 - [Open telemetry for python-Honeycomb.io Documentation](https://docs.honeycomb.io/getting-data-in/opentelemetry/python/)
 - [honeycomb-whoami.glitch.me](honeycomb-whoami.glitch.me)
+- [SDK documention(python-boto3)](https://aws.amazon.com/sdk-for-python/)
+- [aws SDK xray python on github](https://github.com/aws/aws-xray-sdk-python)
+- [Boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/xray.html)
+- 
