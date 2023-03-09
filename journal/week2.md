@@ -88,6 +88,30 @@ span.set_attribute("user.id", user.id())
 - an **x-ray deamon** collects and batches to the **x-ray api** inorder to visualize your data 
 - copy aws-xray-sdk and paste in requirements.txt in the backend folder
 - run pip install -r requirements.txt
+0,
+      "FixedRate": 0.1,
+      "ReservoirSize": 5,
+      "ServiceName": "Cruddur",
+      "ServiceType": "*",
+      "Host": "*",
+      "HTTPMethod": "*",
+      "URLPath": "*",
+      "Version": 1- installing middleware in the app.py
+from aws_xray_sdk.core import xray_recorder
+from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
+
+xray_url = os.getenv("AWS_XRAY_URL")
+xray_recorder.configure(service='Cruddur', dynamic_naming=xray_url)
+XRayMiddleware(app, xray_recorder)
+
+- touch aws/json/xray.json and paste
+{
+  "SamplingRule": {
+      "RuleName": "Cruddur",
+      "ResourceARN": "*",
+      "Priority": 900
+  }
+}
 
 ### 4. Configure, provision X-Ray daemon within docker-compose 
 ### 5. Observe X-Ray in AWS console
