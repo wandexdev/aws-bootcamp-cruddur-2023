@@ -85,6 +85,10 @@ span.set_attribute("user.id", user.id())
 ![honeycomb](assets/wk2/honeycomblogs.png)
 ### 2. Run Queries to explore traces within Honeycomb.io
 ### 3. Instrument AWS X-Ray into backend flask app
+- an **x-ray deamon** collects and batches to the **x-ray api** inorder to visualize your data 
+- copy aws-xray-sdk and paste in requirements.txt in the backend folder
+- run pip install -r requirements.txt
+
 ### 4. Configure, provision X-Ray daemon within docker-compose 
 ### 5. Observe X-Ray in AWS console
 ### 6. Integrate Rollbar and capture error
