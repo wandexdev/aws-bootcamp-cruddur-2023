@@ -59,6 +59,7 @@ app = Flask(__name__)
 FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 ```
+### 2. Run Queries to explore traces within Honeycomb.io
 - Testing the setup
     - Already had my frontend initialised thanks to the gitpod configuration
     - cd to root folder
@@ -66,7 +67,7 @@ RequestsInstrumentor().instrument()
     - All set and receiving data
 ![honeycomb](assets/wk2/honeycombhome.png)
 ![honeycomb](assets/wk2/tracehoney.png)
-- To debug or test if youre unsure of the api key is coming from, try [honeycomb-whoami.glitch.me](honeycomb-whoami.glitch.me)
+- To debug or test if you're unsure where the api key is coming from, try [honeycomb-whoami.glitch.me](honeycomb-whoami.glitch.me)
 -Hardcode spans: The code is to create spans for the backend flask
 - go to honey comb docs for open telemetry and python
 ```python
@@ -83,28 +84,24 @@ span = trace.get_current_span()
 span.set_attribute("user.id", user.id())
 ```
 ![honeycomb](assets/wk2/honeycomblogs.png)
-### 2. Run Queries to explore traces within Honeycomb.io
 ### 3. Instrument AWS X-Ray into backend flask app
+- X-ray is an AWS Observabilty service
 - an **x-ray deamon** collects and batches to the **x-ray api** inorder to visualize your data 
-- copy aws-xray-sdk and paste in requirements.txt in the backend folder
+- copy ```aws-xray-sdk``` and paste in ```requirements.txt``` in the backend folder
 - run pip install -r requirements.txt
-0,
-      "FixedRate": 0.1,
-      "ReservoirSize": 5,
-      "ServiceName": "Cruddur",
-      "ServiceType": "*",
-      "Host": "*",
-      "HTTPMethod": "*",
-      "URLPath": "*",
-      "Version": 1- installing middleware in the app.py
+- Add the below xray configuration codes to the ```app.py``` file
+```python
 from aws_xray_sdk.core import xray_recorder
 from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
 
 xray_url = os.getenv("AWS_XRAY_URL")
-xray_recorder.configure(service='Cruddur', dynamic_naming=xray_url)
-XRayMiddleware(app, xray_recorder)
+xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
 
-- touch aws/json/xray.json and paste
+XRayMiddleware(app, xray_recorder)
+```
+
+- touch ```aws/json/xray.json``` to create a new file in the aws directory and paste:
+```json
 {
   "SamplingRule": {
       "RuleName": "Cruddur",
@@ -112,7 +109,19 @@ XRayMiddleware(app, xray_recorder)
       "Priority": 900
   }
 }
-
+```
+- Create Log group:
+```shell
+aws xray create-group \
+   --group-name "Cruddur" \
+   --filter-expression "service(\"backend-flask\")"
+```
+![xray](assets/wk2/xraycreategroup.png)
+![xray](assets/wk2/consoleloggroup.png)
+- Create sampling rule
+- cd root folder and paste: ```aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json```
+[json sampling rule](assets/wk2/jsonsamplingrule.png)
+[console sampling rule](/assets/wk2/consolesamplingrule.png)
 ### 4. Configure, provision X-Ray daemon within docker-compose 
 ### 5. Observe X-Ray in AWS console
 ### 6. Integrate Rollbar and capture error
