@@ -14,10 +14,10 @@ Week 2 emphasized **observability** and I learnt about its 4 pillars (metrics, l
 - The Service name determines the spans that get sent from the application.
 - It is preferable not to set them in the work environment to prevent consistency. We want them set seperately so they're specific to the services. e.g like hardcoding it in docker compose file.
 - Copied the OTEL_SERVICE_NAME and hard coded it into the backend section of the docker compose
-- Confirguring **OTEL(Open TElemetry)** to send to honeycomb:
-> **Open telemetry is part of the vendor- neutral Cloud Native Computing Foundation(CNCF);
+- Confirguring **OTEL(Open Telemetry)** to send to honeycomb:
+> **Open telemetry is part of the vendor- neutral Cloud Native Computing Foundation(CNCF)**;
 >
-> its a standardized method for all observabilty tools e.g HoneyComb, AWS xray etc
+> **its a standardized method for all observabilty tools e.g HoneyComb, AWS xray etc**
 ```
 OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
 OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=${HONEYCOMB_API_KEY}"
@@ -106,12 +106,20 @@ XRayMiddleware(app, xray_recorder)
 - touch ```aws/json/xray.json``` to create a new file in the aws directory and paste:
 ```json
 {
-  "SamplingRule": {
-      "RuleName": "Cruddur",
-      "ResourceARN": "*",
-      "Priority": 900
+    "SamplingRule": {
+        "RuleName": "Cruddur",
+        "ResourceARN": "*",
+        "Priority": 9000,
+        "FixedRate": 0.1,
+        "ReservoirSize": 5,
+        "ServiceName": "backend-flask",
+        "ServiceType": "*",
+        "Host": "*",
+        "HTTPMethod": "*",
+        "URLPath": "*",
+        "Version": 1
+    }
   }
-}
 ```
 - Create Log group:
 ```shell
