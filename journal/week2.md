@@ -12,8 +12,8 @@ Week 2 emphasized **observability** and I learnt about its 4 pillars (metrics, l
 - exported as an environment variable and to saved it to gitpod's envirnment when restarted.
 ![honeycomb](assets/wk2/envgitpodvariables.png)
 - The Service name determines the spans that get sent from the application.
-- It is preferable not to set them in the work envirnment to prevent consistency. we want them set seperately so theyre specific to the services. e.g like hardcoding it in docker compose.
-- so copied the OTEL_SERVICE_NAME and hard coded it into the backend section of the docker compose
+- It is preferable not to set them in the work envirnment to prevent consistency. We want them set seperately so they're specific to the services. e.g like hardcoding it in docker compose file.
+- Copied the OTEL_SERVICE_NAME and hard coded it into the backend section of the docker compose
 - Confirguring OTEL(Open TElemetry) to send to honeycomb
 Open telemetry is part of CNCF() and its a standardized method for all observeabilty tool
 ```
@@ -78,6 +78,7 @@ with tracer.start_as_current_span("http-handler"):
     with tracer.start_as_current_span("my-cool-function"):
         # do something
 ```
+![honeycomb](assets/wk2/spanbackendlogs.png)
 - Adding attributes to the span we created
 ```python
 span = trace.get_current_span()
@@ -123,7 +124,29 @@ aws xray create-group \
 [json sampling rule](assets/wk2/jsonsamplingrule.png)
 [console sampling rule](/assets/wk2/consolesamplingrule.png)
 ### 4. Configure, provision X-Ray daemon within docker-compose 
+- Copy and paste these contents to the `docker-compose.yml``` file
+```YAML
+xray-daemon:
+    image: "amazon/aws-xray-daemon"
+    environment:
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+      AWS_REGION: "us-east-1"
+    command:
+      - "xray -o -b xray-daemon:2000"
+    ports:
+      - 2000:2000/udp
+```
+- Details:
+    - The ```amazon/aws-xray-daemon``` is an image found in a public Elastic Container Registry(ECR)repository on docker hub and its managed by amazon.
+    - The AWS credentials variables to be parsed have been stored on gitpod prevously,
+    - Added the additional x-ray variables and url to the docker compose file
+    AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
+    AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 ### 5. Observe X-Ray in AWS console
+![xray](assets/wk2/)
+![xray](assets/wk2/bettermoredetailsxraytraces.png)
+![xray](assets/wk2/consolexraytraces.png)
 ### 6. Integrate Rollbar and capture error
 ### 7. Configure custom logger to send CloudWatch Logs
 
