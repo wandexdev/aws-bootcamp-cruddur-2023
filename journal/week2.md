@@ -154,10 +154,59 @@ xray-daemon:
     AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
     AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 ### 5. Observe X-Ray in AWS console
+![xray](assets/wk2/xrayservicemap.png)
 ![xray](assets/wk2/bettermoredetailsxraytraces.png)
 ![xray](assets/wk2/consolexraytraces.png)
 ### 6. Integrate Rollbar and capture error
 ### 7. Configure custom logger to send CloudWatch Logs
+- Install watch tower by placing watchtower in the ```requiremnets.txt``` file
+- paste in ```app.py``` file to set up Cloudwatch log called cruddur and set up handler for logging in information.
+```python
+# Cloudwatch Logs -----
+import watchtower
+import logging
+from time import strftime
+```
+```python
+# Configuring Logger to Use CloudWatch
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
+console_handler = logging.StreamHandler()
+cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
+LOGGER.addHandler(console_handler)
+LOGGER.addHandler(cw_handler)
+LOGGER.info("some message")
+```
+![Cloudwatch log group](assets/wk2/cloudwatchloggroup.png)
+- Add below code also to log in errors after every singke requests:
+```python
+@app.after_request
+def after_request(response):
+    timestamp = strftime('[%Y-%b-%d %H:%M]')
+    LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
+    return response
+```
+- Set the env variables of backend flask in the ```docker-compose.yml``` file
+```shell
+      AWS_DEFAULT_REGION: "${AWS_DEFAULT_REGION}"
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+```
+- add custom logging:
+```python
+# In the home_activities.py  file
+  def run(logger):
+    logger.info("HomeActivities")
+
+# In the app.py file
+@app.route("/api/activities/home", methods=['GET'])
+def data_home():
+  data = HomeActivities.run(logger=LOGGER)
+  return data, 200
+```
+![Cloud Watch](assets/wk2/cloudwatchintergrated.png)
+- Commented out all the logs changes in the code to prevent excess cost incurement
+- Turned off codes for AWS xray also
 
 ## [Homework Challenges](#challenges)
 Here is a little summary before the details:
