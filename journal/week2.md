@@ -12,10 +12,12 @@ Week 2 emphasized **observability** and I learnt about its 4 pillars (metrics, l
 - exported as an environment variable and to saved it to gitpod's envirnment when restarted.
 ![honeycomb](assets/wk2/envgitpodvariables.png)
 - The Service name determines the spans that get sent from the application.
-- It is preferable not to set them in the work envirnment to prevent consistency. We want them set seperately so they're specific to the services. e.g like hardcoding it in docker compose file.
+- It is preferable not to set them in the work environment to prevent consistency. We want them set seperately so they're specific to the services. e.g like hardcoding it in docker compose file.
 - Copied the OTEL_SERVICE_NAME and hard coded it into the backend section of the docker compose
-- Confirguring OTEL(Open TElemetry) to send to honeycomb
-Open telemetry is part of CNCF() and its a standardized method for all observeabilty tool
+- Confirguring **OTEL(Open Telemetry)** to send to honeycomb:
+> **Open telemetry is part of the vendor- neutral Cloud Native Computing Foundation(CNCF)**;
+>
+> **its a standardized method for all observabilty tools e.g HoneyComb, AWS xray etc**
 ```
 OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
 OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=${HONEYCOMB_API_KEY}"
@@ -104,12 +106,20 @@ XRayMiddleware(app, xray_recorder)
 - touch ```aws/json/xray.json``` to create a new file in the aws directory and paste:
 ```json
 {
-  "SamplingRule": {
-      "RuleName": "Cruddur",
-      "ResourceARN": "*",
-      "Priority": 900
+    "SamplingRule": {
+        "RuleName": "Cruddur",
+        "ResourceARN": "*",
+        "Priority": 9000,
+        "FixedRate": 0.1,
+        "ReservoirSize": 5,
+        "ServiceName": "backend-flask",
+        "ServiceType": "*",
+        "Host": "*",
+        "HTTPMethod": "*",
+        "URLPath": "*",
+        "Version": 1
+    }
   }
-}
 ```
 - Create Log group:
 ```shell
@@ -144,13 +154,32 @@ xray-daemon:
     AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
     AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 ### 5. Observe X-Ray in AWS console
-![xray](assets/wk2/)
 ![xray](assets/wk2/bettermoredetailsxraytraces.png)
 ![xray](assets/wk2/consolexraytraces.png)
 ### 6. Integrate Rollbar and capture error
 ### 7. Configure custom logger to send CloudWatch Logs
 
 ## [Homework Challenges](#challenges)
+Here is a little summary before the details:
+- [x] Sorted Segments and SubSegments
+- [x] A 
+- [x] P
+- [x] U
+- [x] I
+### 1. Segments and SubSegments with x-ray
+- Added these to the ```app.py``` file 
+  - ```@xray_recorder.capture('activities_home')``` to the "/api/activities/home" endpoint
+  - ```@xray_recorder.capture('activities_users')``` to the "/api/activities/@<string:handle>" endpoint
+  - ```@xray_recorder.capture('activities_show')``` to the "/api/activities/<string:activity_uuid>" endpoint
+- Deleted ```segment = xray_recorder.begin_segment
+('user_activities')``` 
+- Struggled a lot with xray receiving the traces for the user activity but it finally happened
+![xray](assets/wk2/consolebatchsent.png)
+![xray](assets/wk2/xtraytracesviewd.png)
+![xray](assets/wk2/premockdata.png)
+![xray](assets/wk2/mockdataaaaaa.png)
+### 2. 
+
 
 ## References:
 - [Open telemetry for python-Honeycomb.io Documentation](https://docs.honeycomb.io/getting-data-in/opentelemetry/python/)
