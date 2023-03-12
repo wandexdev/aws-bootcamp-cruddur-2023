@@ -247,7 +247,7 @@ Here is a little summary before the details:
 ![xray](assets/wk2/premockdata.png)
 ![xray](assets/wk2/mockdataaaaaa.png)
 ### 2. Triggered and Resolved ERror from Rollbar
-![rollbar](assets/wk2/rollbarerrors.png)
+![rollbar](assets/wk2/rollbarsegmenterror2.png)
 
 
 ## References:
