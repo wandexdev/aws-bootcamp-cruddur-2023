@@ -166,7 +166,7 @@ rollbar
 ```
 - Nest pip install -r requirements.txt
 - Get the access_token from the roller bar website and save as environment variable then save as environment variable in gitpod also
-![rollbar](assets/wk2/rollvariables.png)
+![rollbar](assets/wk2/rollbarvariables.png)
 - created a new endpoint with an error to send to rollbar on the ```home_activities``` page.
 ```python
 @app.route('/rollbar/test')
