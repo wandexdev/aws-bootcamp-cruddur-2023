@@ -1,5 +1,5 @@
 # Week 2 — Distributed Tracing
-![cover](assets/wk2/wk2.png)
+![cover](assets/wk2/wk2cover.png)
 
 ## Synopsis:
 Week 2 emphasized **observability** and I learnt about its 4 pillars (metrics, logs, events and traces) as well as how crucial it is in the entire software development cycle. 
@@ -158,6 +158,8 @@ xray-daemon:
 ![xray](assets/wk2/bettermoredetailsxraytraces.png)
 ![xray](assets/wk2/consolexraytraces.png)
 ### 6. Integrate Rollbar and capture error
+-
+![rollbar endpoint](assets/wk2/)
 ### 7. Configure custom logger to send CloudWatch Logs
 - Install watch tower by placing watchtower in the ```requiremnets.txt``` file
 - paste in ```app.py``` file to set up Cloudwatch log called cruddur and set up handler for logging in information.
@@ -236,4 +238,6 @@ Here is a little summary before the details:
 - [SDK documention(python-boto3)](https://aws.amazon.com/sdk-for-python/)
 - [aws SDK xray python on github](https://github.com/aws/aws-xray-sdk-python)
 - [Boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/xray.html)
+- [Rollbar Documentation on Github](https://github.com/rollbar/pyrollbar)
+- [watchtoer-PyPi](https://pypi.org/project/watchtower/)
 - 
