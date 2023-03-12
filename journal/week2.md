@@ -158,8 +158,25 @@ xray-daemon:
 ![xray](assets/wk2/bettermoredetailsxraytraces.png)
 ![xray](assets/wk2/consolexraytraces.png)
 ### 6. Integrate Rollbar and capture error
--
-![rollbar endpoint](assets/wk2/)
+- Visit the rollbar site and add the app language type
+- Add the below to the ```requirements.txt file```
+```
+blinker
+rollbar
+```
+- Nest pip install -r requirements.txt
+- Get the access_token from the roller bar website and save as environment variable then save as environment variable in gitpod also
+![rollbar](assets/wk2/rollvariables.png)
+- created a new endpoint with an error to send to rollbar on the ```home_activities``` page.
+```python
+@app.route('/rollbar/test')
+def rollbar_test():
+    rollbar.report_message('Hello World!', 'warning')
+    return "Hello World!"
+```
+
+![rollbar endpoint](assets/wk2/rollbarendpointtest.png)
+![rollbar](assets/wk2/rollbarinitial.png)
 ### 7. Configure custom logger to send CloudWatch Logs
 - Install watch tower by placing watchtower in the ```requiremnets.txt``` file
 - paste in ```app.py``` file to set up Cloudwatch log called cruddur and set up handler for logging in information.
@@ -213,7 +230,7 @@ def data_home():
 ## [Homework Challenges](#challenges)
 Here is a little summary before the details:
 - [x] Sorted Segments and SubSegments
-- [x] A 
+- [x] Triggered and Resolved ERror from Rollbar 
 - [x] P
 - [x] U
 - [x] I
@@ -229,7 +246,8 @@ Here is a little summary before the details:
 ![xray](assets/wk2/xtraytracesviewd.png)
 ![xray](assets/wk2/premockdata.png)
 ![xray](assets/wk2/mockdataaaaaa.png)
-### 2. 
+### 2. Triggered and Resolved ERror from Rollbar
+![rollbar](assets/wk2/rollbarerrors.png)
 
 
 ## References:
