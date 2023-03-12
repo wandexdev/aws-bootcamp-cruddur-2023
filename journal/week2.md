@@ -257,5 +257,4 @@ Here is a little summary before the details:
 - [aws SDK xray python on github](https://github.com/aws/aws-xray-sdk-python)
 - [Boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/xray.html)
 - [Rollbar Documentation on Github](https://github.com/rollbar/pyrollbar)
-- [watchtoer-PyPi](https://pypi.org/project/watchtower/)
-- 
+- [watchtower-PyPi](https://pypi.org/project/watchtower/)
