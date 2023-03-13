@@ -229,11 +229,14 @@ def data_home():
 
 ## [Homework Challenges](#challenges)
 Here is a little summary before the details:
-- [x] Added more attributes inside custom span of Home and Notification service files
+- [x] Added more attributes inside custom span of Home and Notification service files with HoneyComb
 - [x] Sorted Segments and SubSegments
 - [x] Triggered more errors and Resolved them with Rollbar 
 
 ### 1. Added more attributes inside custom span of Home and Notification service files
+- Added custom spans to ```home_activities.py``` and ```notification_activities.py```
+![Honeycomb](assets/wk2/home_activities.png)
+![Honeycomb](assets/wk2/notifications_activities.png)
 ### 2. Segments and SubSegments with x-ray
 - Added these to the ```app.py``` file 
   - ```@xray_recorder.capture('activities_home')``` to the "/api/activities/home" endpoint
@@ -247,6 +250,7 @@ Here is a little summary before the details:
 ![xray](assets/wk2/premockdata.png)
 ![xray](assets/wk2/mockdataaaaaa.png)
 ### 3. Triggered more errors and Resolved them with Rollbar
+![rollbar](assets/wk2/rollbaremailnotification.png)
 ![rollbar](assets/wk2/rollbarsegmenterror2.png)
 
 ## References:
