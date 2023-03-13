@@ -229,12 +229,12 @@ def data_home():
 
 ## [Homework Challenges](#challenges)
 Here is a little summary before the details:
+- [x] Added more attributes inside custom span of Home and Notification service files
 - [x] Sorted Segments and SubSegments
-- [x] Triggered and Resolved ERror from Rollbar 
-- [x] P
-- [x] U
-- [x] I
-### 1. Segments and SubSegments with x-ray
+- [x] Triggered more errors and Resolved them with Rollbar 
+
+### 1. Added more attributes inside custom span of Home and Notification service files
+### 2. Segments and SubSegments with x-ray
 - Added these to the ```app.py``` file 
   - ```@xray_recorder.capture('activities_home')``` to the "/api/activities/home" endpoint
   - ```@xray_recorder.capture('activities_users')``` to the "/api/activities/@<string:handle>" endpoint
@@ -246,9 +246,8 @@ Here is a little summary before the details:
 ![xray](assets/wk2/xtraytracesviewd.png)
 ![xray](assets/wk2/premockdata.png)
 ![xray](assets/wk2/mockdataaaaaa.png)
-### 2. Triggered and Resolved ERror from Rollbar
+### 3. Triggered more errors and Resolved them with Rollbar
 ![rollbar](assets/wk2/rollbarsegmenterror2.png)
-
 
 ## References:
 - [Open telemetry for python-Honeycomb.io Documentation](https://docs.honeycomb.io/getting-data-in/opentelemetry/python/)
