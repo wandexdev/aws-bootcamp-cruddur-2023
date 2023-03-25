@@ -1,3 +1,3 @@
 # Week 3 — Decentralized Authentication
 
-here!
+![coverImage](images/wk3.png
